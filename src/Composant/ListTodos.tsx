@@ -1,31 +1,19 @@
 import { useState } from "react";
+import { ToDo } from "../Model/Todo";
 
-export const ListToDos = () => {
-}
+export const ListToDos = (todoList: any[]) => {
+    // const [todoList, setTodoList]= useState<ToDo[]>([]);
+    // console.log("je suis la " + console.log(":::::" + JSON.stringify(todoList)))
+    
+    return (
+        <div style={{
+            textAlign : "center",
+        }}>
+            {todoList.map((todo)=> (
 
-export function getList(){
-    
-    
-    // const [listTodos, setListTodos] = useState<ToDoLine[]>;
-
-    let listToDo = [];
-    console.log("je suis la apres le click" + localStorage.length);
-    let k=1;
-    let listSize = localStorage.length;
-    for (k; k <= listSize; k=k+1){
-        console .log("Mon object : " + localStorage.getItem(k.toString()) + " i : " + k);
-        listToDo.push(
-            
-                <li>{localStorage.getItem(k.toString())}</li>
-            
-        )
-    }
-    return listToDo;
-
-    
-    
+                <li>{todo.taskName} <a> On est la </a> {todo.deadline}</li>
+            ))}
+        </div>
         
-        // console.log(listTodo.)
-    
-    // return (<div> Liste Vide </div>)
+    );
 }

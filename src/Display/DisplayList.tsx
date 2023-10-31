@@ -1,4 +1,4 @@
-import { getList } from "../Composant/ListTodos"
+// import { getList } from "../Composant/ListTodos"
 
 type DisplayListProps = {
 
@@ -9,7 +9,7 @@ export function DisplayList(){
         <div style={{
             textAlign : "center",
         }}>
-            {getList()}
+            {/* {getList()} */}
         </div>
     )
 }
