@@ -1,5 +1,5 @@
-export interface Todo{
-    id : number;
-    label : string;
-    couleur : string
+export interface Category{
+    id : string;
+    label : string | null;
+    couleur : string | null;
 }
