@@ -7,9 +7,10 @@ import { deleteLocalStorageData, saveData } from '../Service/LocalStorageService
 
 type ToDoLineProps = {
     todoList: ToDo[],setTodoList: Dispatch<SetStateAction<ToDo[]>>
+    etat:string, setEtat: Dispatch<SetStateAction<string>>
 }
 
-export const ToDoLine = ({todoList, setTodoList}: ToDoLineProps) => {
+export const ToDoLine = ({todoList, setTodoList}: ToDoLineProps,  {etat, setEtat} : ToDoLineProps) => {
 
 
     function deleteData(todoRm : ToDo){
@@ -20,8 +21,15 @@ export const ToDoLine = ({todoList, setTodoList}: ToDoLineProps) => {
         console.log("Ma nouvelle ancienne " + JSON.stringify(todoList))
         setTodoList(newTodolist);
         console.log("Ma nouvelle todolist " + JSON.stringify(todoList))
-        saveData({["todoList"] : newTodolist, setTodoList});
+        saveData(newTodolist);
         WindowConfirmDeleteToDo();
+    }
+
+    function handleClickEtat(todoMD: ToDo){
+        console.log("je suis la " + JSON.stringify(todoList.indexOf(todoMD)))
+        // let newEtat = "form";
+        // setEtat(newEtat);
+        // console.log(etat)
     }
 
 
@@ -29,11 +37,7 @@ export const ToDoLine = ({todoList, setTodoList}: ToDoLineProps) => {
         <div style={{
             textAlign : "center",
         }}>
-           
-            {/* <table> */}
-                {/* <tbody> */}
                     {todoList.map((todo)=> (
-                    // <div className="cards">
                         <article className={todo.categorie.couleur!}>
                             <div>
                                 <header>
@@ -42,18 +46,13 @@ export const ToDoLine = ({todoList, setTodoList}: ToDoLineProps) => {
                                 <hr/>
                                 <div className='card-text'>{todo.categorie.id}</div>
                                 <div className="card-text">{todo.deadline} jours </div>
+                                <br></br>
+                                <button className='btn btn-light' onClick={() => handleClickEtat(todo)}>Modifier </button>
+                                <a> </a>
                                 <button className="btn btn-danger" key={todo.taskName+todo.deadline} onClick={() => deleteData(todo)}> Delete </button><br/>
                             </div>
-                        </article>
-                    // </div>
-
-                        // <tr>
-                        //     <td>{todo.taskName}</td>
-                        //     <td>{todo.deadline}</td>
-                        // </tr>  
+                        </article> 
                     ))}
-                {/* </tbody> */}
-            {/* </table> */}
         </div>
         
     );

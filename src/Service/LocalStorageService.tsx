@@ -11,15 +11,11 @@ type LocalStorageServiceProps = {
 export const LocalStorageService = () => {
 }
 
-export function  saveData({todoList, setTodoList}: LocalStorageServiceProps){
-    console.log(JSON.stringify(todoList))
-    // let myuuid = uuidv4();
-    localStorage.setItem("Ma Todo Liste",JSON.stringify(todoList));
-    // for (let i = 0; i<=0; i++){
-    //     if(localStorage.key(i) == "Ma Todo Liste"){
-    //         localStorage.setItem("Ma Todo Liste", )
-    //     }
-    // }
+export function  saveData(todoList: ToDo[]){
+    if(todoList){
+        console.log(JSON.stringify(todoList))
+        localStorage.setItem("Ma Todo Liste",JSON.stringify(todoList));
+    }   
 }
 
 export function getData(){
