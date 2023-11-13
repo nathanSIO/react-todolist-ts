@@ -1,8 +1,12 @@
-export default class TodoLine {
+export interface TodoLine {
+  id: string;
+  name: string;
+  deadLine: string;
+  categorie?: string;
+}
 
-    id: string | undefined = undefined
-    name: string | undefined = undefined
-    deadLine: string | undefined = undefined
-    categorie: string | undefined = undefined
-
+export interface TodoLineCRU {
+  name?: string;
+  deadLine?: string;
+  categorie?: string;
 }

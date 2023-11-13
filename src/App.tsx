@@ -1,10 +1,9 @@
-import React from 'react';
-import './App.css';
-import {Page} from "./view/Page";
-
+import React from "react";
+import "./App.css";
+import { Page } from "./view/Page";
 
 function App() {
-  return <Page />
+  return <Page />;
 }
 
 export default App;
