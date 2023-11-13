@@ -44,7 +44,7 @@ export const Page = () => {
 
         let i = 0
         new LocalStorageService().getData().forEach(item => {
-            items.push(<ItemCard index={i++}
+            items.push(<ItemCard index={i++} key={"item-"+i}
                 item={item}
                 editAction={()=>editItem(item)}
                 deleteAction={()=>deleteItem(item)}></ItemCard>)
