@@ -14,14 +14,7 @@ function App() {
   const [todoList, setTodoList]= useState<ToDo[]>([]);
   const [etat, setEtat] = useState<string>("todo");
   const [todo, setTodo] = useState<ToDo>({taskName:"",deadline:"",categorie: {id:"",label:"", couleur:"card text-white bg-info mb-3"}});
-  const [currentTodo, setCurrentTodo] = useState<ToDo>();
-
-    // localStorage.clear();
-    // const navigate =useNavigate();
-
-    // const goToForm = () => { 
-    //   navigate('/first');  
-    // }; 
+  const [currentTodo, setCurrentTodo] = useState<ToDo>(); 
 
   function handleClickEtat(){
     let newTodo: ToDo;
@@ -29,14 +22,12 @@ function App() {
     setTodo(newTodo)
     let newEtat = "form"
     setEtat(newEtat)
-    console.log("Mon Etat : " +  etat)
   }
   
   if (etat == "todo"){
     return (
       <div style = {{textAlign : "center",}}>
         <></>
-        {/* <h2 >ToDoList</h2> */}
         <Base/>
         <button className="btn btn-outline-success" onClick={() => handleClickEtat()}>New task</button>  
         <ToDoListPage todoList={todoList} setTodoList={setTodoList} etat={etat} setEtat={setEtat} todo={todo} setTodo={setTodo} currentTodo={currentTodo} setCurrentTodo={setCurrentTodo}/>

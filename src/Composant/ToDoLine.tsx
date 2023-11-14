@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import '../App.css';
 import { ToDo } from '../Model/Todo';
-import { ToDoListPage } from './ToDoListPage';
 import { WindowConfirmDeleteToDo } from './WindowConfirmDeleteToDo';
-import { deleteLocalStorageData, getData, saveData } from '../Service/LocalStorageService';
+import { saveData } from '../Service/LocalStorageService';
 
 type ToDoLineProps = {
     todoList: ToDo[],setTodoList: Dispatch<SetStateAction<ToDo[]>>
@@ -17,9 +16,7 @@ export const ToDoLine = ({todoList, setTodoList, etat, setEtat, todo, setTodo, c
 
     function deleteData(todoRm : ToDo){
         const newTodolist = [...todoList!]
-        // console.log(newTodolist)
         newTodolist.splice(newTodolist.indexOf(todoRm), 1)
-        // deleteLocalStorageData(todoRm);
         console.log("Ma nouvelle ancienne " + JSON.stringify(todoList))
         setTodoList(newTodolist);
         console.log("Ma nouvelle todolist " + JSON.stringify(todoList))
@@ -28,22 +25,15 @@ export const ToDoLine = ({todoList, setTodoList, etat, setEtat, todo, setTodo, c
     }
 
     function handleClickEtat(todoMD: ToDo){
-        console.log("je suis la " +JSON.stringify(todoMD))
-        // console.log(getData().getItem(todoList.indexOf(todoMD)))
         for(let i=0; i<=todoList.length;i++){
             if (i == todoList.indexOf(todoMD)){
-                // console.log("je suis la " + JSON.stringify(todoMD))
                 if(todoMD){
-                    // console.log("currentTodo avant" + JSON.stringify(todo))
-                    // useEffect(() => {
                         setTodo({
                             taskName: todoMD.taskName,
                             deadline: todoMD.deadline,
                             categorie: todoMD.categorie
 
                         })
-                        console.log("currentTodo après" + currentTodo)
-                    // }, [])
                     setCurrentTodo(todoMD)
                 }  
             }
@@ -53,16 +43,6 @@ export const ToDoLine = ({todoList, setTodoList, etat, setEtat, todo, setTodo, c
         return currentTodo
         
     }
-
-    // function changeSetTodo(){
-    //     setCurrentTodo({
-    //         taskName: taskName,
-    //         deadline: deadline,
-    //         categorie: categorie
-
-    //     })
-    // }
-
 
     return (
         <div style={{
