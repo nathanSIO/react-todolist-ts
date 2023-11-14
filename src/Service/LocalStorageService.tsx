@@ -39,9 +39,6 @@ export function getData(){
 
 export function deleteLocalStorageData(todoRm: ToDo){
     for(let i=0; i<=localStorage.length;i++){
-        if (localStorage.key(i)== "Ma Todo Liste"){
-           
-        }
         const key = localStorage.key(i);
         if (localStorage.getItem(key!) == JSON.stringify(todoRm) ){
             localStorage.removeItem(key!);
